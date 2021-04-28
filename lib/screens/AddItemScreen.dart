@@ -4,13 +4,14 @@ import 'package:provider_3/provider/ItemAddNotifier.dart';
 import 'package:provider_3/provider/ShopNameNotifier.dart';
 
 class AddItemScreen extends StatelessWidget{
+
   AddItemScreen():super();
+
+  final TextEditingController _itemNameController=TextEditingController();
+  final TextEditingController _shopNameController=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    
-    final TextEditingController _itemNameController=TextEditingController();
-    final TextEditingController _shopNameController=TextEditingController();
 
     final title="Add Item";
     return Scaffold(
@@ -31,11 +32,11 @@ class AddItemScreen extends StatelessWidget{
             ),
             ElevatedButton(
               child: Text('ADD ITEM'),
-              onPressed: () async {
+              onPressed: () {
                 if (_itemNameController.text.isEmpty) {
                   return;
                 }
-                await Provider.of<ItemAddNotifier>(context, listen: false)
+                Provider.of<ItemAddNotifier>(context, listen: false)
                     .addItem(_itemNameController.text);
                 Navigator.pop(context);
               },
@@ -49,11 +50,11 @@ class AddItemScreen extends StatelessWidget{
             ),
             ElevatedButton(
               child: Text('ADD ITEM'),
-              onPressed: () async {
+              onPressed: () {
                 if (_shopNameController.text.isEmpty) {
                   return;
                 }
-                await Provider.of<ShopNameNotifier>(context, listen: false)
+                Provider.of<ShopNameNotifier>(context, listen: false)
                     .updateShopName(_shopNameController.text);
                 Navigator.pop(context);
               },

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'AddItemScreen.dart';
-import 'ItemAddNotifier.dart';
-import 'ShopNameNotifier.dart';
+import '../provider/ItemAddNotifier.dart';
+import '../provider/ShopNameNotifier.dart';
 class HomeScreen extends StatelessWidget {
   //
-  HomeScreen() : super();final String title = 'Home';@override
+  HomeScreen() : super();
+  final String title = 'Home';
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -32,9 +34,9 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Consumer<ShopNameNotifier>(
-            builder: (context, shopNameNotifier, _) {
-            return Text('Shop Name: ${shopNameNotifier.shopName}');
-            },
+              builder: (context, shopNameNotifier, _) {
+              return Text('Shop Name: ${shopNameNotifier.shopName}');
+              },
             ),
             Expanded(
               child: Consumer<ItemAddNotifier>(
@@ -48,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                           itemAddNotifier.itemList[index].itemName,
                           style: TextStyle(
                             fontSize: 20.0,
-                            color: Colors.black,
+                            color: Colors.black ,
                           ),
                         ),
                       );
